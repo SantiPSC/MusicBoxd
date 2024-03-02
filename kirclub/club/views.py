@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
 # Create your views here.
 def index(request):
-    my_dict = {'insert_me': "Hello I am from views.py!"}
-    return render(request, 'index.html', context=my_dict)
+    posts = Post.objects.all()    
+    return render(request, 'index.html', context={"recetas": posts})
+
+def receta(request):
+    return render(request, 'receta.html')

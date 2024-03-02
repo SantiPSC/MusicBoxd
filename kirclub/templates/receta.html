@@ -1,28 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receta</title>
-</head>
-<body>
+{%extends 'master.html'%}
+{% load static %}
+{%block content%}
 
-    <section  style="background-color: #fdfcf3;">
+<body style='background: #ff2f0b'>
 
-        <div><button type="button" class="btn">Regresar</button>></div>
-  
-        <div class="center"></div>
-        <div class="container text-center">
-          <div class="card" style="max-width: 30rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="ripple-background">
+      <div class="circle xxlarge shade1"></div>
+      <div class="circle xlarge shade2"></div>
+      <div class="circle large shade3"></div>
+      <div class="circle mediun shade4"></div>
+      <div class="circle small shade5"></div>
+
+      <section class="content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card">
+                <img src="https://i.pinimg.com/736x/88/71/80/887180c3e30097fc7dd33600549c87c7.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title text-center">Nombre de la receta</h5>
+                  <p class="card-text">Ingredientes</p>
+                  <p class="card-text">
+                    <li>Procedimiento</li>
+                  </p>
+
+                  <div class="text-center">
+                    <a href="#" class="btn btn-primary">Me gusta</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        </section>
-    
-</body>
-</html>
+      </section>
+    </div>
+{% endblock %}
