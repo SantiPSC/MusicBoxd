@@ -43,6 +43,8 @@ h2, p {
     background-color: #ffffff; /* Add a white background */
     padding: 20px; /* Add some padding */
     border: 1px solid #dee2e6; /* Add a border */
+     /* Add some margin at the top and bottom*/
+    margin: 15px 0;
 }
 
 .grid-item img {
@@ -63,18 +65,25 @@ h2, p {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0px 10px;
 }
 
 .nav-link {
     margin-right: 10px; /* Add spacing between links */
+    color: black;
 }
 
-
+.nav-link:hover {
+    color: #dc3545; /* Change text color on hover */
+}
 
 .btn-outline:hover {
-    color: #fff; /* Change text color on hover */
+    color: #dc3545; /* Change text color on hover */
 }
 
+#REG {
+    color: #ffffff;
+}
 
 /* Styles for the navbar */
 .navbar-custom {
@@ -117,4 +126,8 @@ body::before {
     100% {
         background-position: 0% 50%;
     }
+}
+
+.grid-item:hover {
+    transform: translateY(-3px); /* Move button up slightly */
 }

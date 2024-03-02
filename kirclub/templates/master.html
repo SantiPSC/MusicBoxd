@@ -20,11 +20,11 @@
           <a href="#" class="nav-link">Hola {{request.user | title}}!</a>
           <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button type="submit" class="nav-link btn btn-danger">Cerrar Sesión</button>
+            <button type="submit" id="REG" class="nav-link btn btn-danger">Cerrar Sesión</button>
         </form>
       {% else %}
           <a href="{% url 'login' %}" class="nav-link btn btn-outline">Iniciar Sesión</a>
-          <a href="#" class="nav-link btn btn-danger">Registrate</a>
+          <a href="#" id="REG" class="nav-link btn btn-danger">Registrate</a>
       {% endif %}
     </nav>
     {% block content %}

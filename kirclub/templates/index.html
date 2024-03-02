@@ -24,18 +24,23 @@
   <div class="grid-section mt-5">
     <div class="row">
       {% for receta in recetas %}
+      {% csrf_token %}
       <div class="col-md-4">
+        <a href="">
         <div class="grid-item d-flex align-items-center">
           <img
             src="{{ receta.image.url }}"
             alt="Image 1" class="img-fluid" />
           <div class="text-section">
             <h3>{{ receta.title }}</h3>
+          </a>
           </div>
           <span class="badge badge-primary" id="receta-{{receta.id}}">{{ receta.likes_count }}</span>
+          {% if request.user.is_authenticated %}
           <div class="button-section ml-auto">
-            <button class="btn btn-danger" hx-post="/api/vote/{{ receta.id }}" hx-target="#receta-{{receta.id}}">Votar</button>
+            <button class="btn btn-danger" hx-post="/api/vote/{{ receta.id }}" hx-target="#receta-{{receta.id}}" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>Votar</button>
           </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
