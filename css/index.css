@@ -1,12 +1,13 @@
 /*
 color palette:
 
-yellow: #ffc404
-blue: #007bff
-dark yellow: #cca301
-soft purple: #a743ff
-dark blue: #004a99
-light blue: #6ec6ff
+#0b1e33	(11,30,51) - dark blue
+#013c58	(1,60,88) - dark blue
+#00537a	(0,83,122) - blue
+#f5a201	(245,162,1) - yellow
+#ffba42	(255,186,66) - yellow
+#a743ff	(167,67,255) - purple
+
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");

@@ -1,4 +1,5 @@
-/* Reset some default styles */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +8,9 @@
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #004a99;
+    font-family: 'Rubik', sans-serif;
+    background-size: 200% 200%; /* Set background size for animation */
+    background: linear-gradient(90deg, #00537a, #013c58);
 }
 
 .container {
@@ -18,8 +20,8 @@ body {
 }
 
 header {
-    background-color: #ffc404;
-    color: #000000;
+    background-color: #0b1e33;
+    color: white;
     padding: 10px 0;
 }
 
@@ -43,7 +45,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #000000;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }
@@ -53,7 +55,8 @@ main {
 }
 
 h2 {
-    font-size: 20px;
+    color: #ffba42;
+    font-size: 50px;
     margin-bottom: 10px;
 }
 
@@ -115,17 +118,23 @@ h2 {
 }
 
 .song-item img {
-    max-width: 100%;
+    /* centered */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 125%;
     border-radius: 5px;
 }
 
 .song-item h3 {
-    font-size: 16px;
+    font-size: 40px;
     margin-top: 10px;
 }
 
 .song-item button {
-    background-color: #ffc404;
+    width: 100px;
+    height: 50px;
+    background-color: #f5a201;
     color: #000000;
     border: none;
     padding: 5px 10px;
@@ -135,11 +144,25 @@ h2 {
 }
 
 footer {
-    background-color: #ffc404;
-    color: #000000;
+    background-color: #0b1e33;
+    color: white;
     text-align: center;
     padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: -900px;
+}
+
+#heart {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: -900px;
 }
