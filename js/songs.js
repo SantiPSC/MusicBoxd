@@ -22,28 +22,58 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.querySelector('.carousel');
 
-    // Replace 'YOUR_API_KEY' with your actual Last.fm API key
-    const apiKey = '3da40bf1e588d1a88f31e2e090f6e5b4';
-
-    // Fetch top tracks from Last.fm API
-    fetch(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${apiKey}&format=json`)
+    // Fetch top tracks from MusicBrainz API
+    fetch('https://musicbrainz.org/ws/2/recording?query=*&fmt=json')
         .then(response => response.json())
         .then(data => {
-            // Extract top tracks from the response
-            const topTracks = data.tracks.track;
+            // Extract recordings from the response
+            const recordings = data.recordings;
 
-            // Iterate through the top tracks and create song items
-            topTracks.forEach(track => {
+            // Iterate through the recordings and create song items
+            recordings.forEach(recording => {
+                // Wait 1 second before creating the next song item
+                let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+                sleep(100);
                 const songItem = document.createElement('div');
                 songItem.classList.add('song-item');
 
-                const img = document.createElement('img');
-                img.src = track.image[2]['#text']; // Large image
-                img.alt = track.name;
-                songItem.appendChild(img);            
+                // Fetching artist information for the recording from MusicBrainz API
+                fetch(`https://musicbrainz.org/ws/2/recording/${recording.id}?inc=artist-credits&fmt=json`)
+                    .then(response => response.json())
+                    .then(artistData => {
+                        // Extracting artist information
+                        const artistCredits = artistData['artist-credit'];
+                        if (artistCredits && artistCredits.length > 0) {
+                            const artist = artistCredits[0].artist.name;
 
+                            // Fetching cover art for the artist from Cover Art Archive API
+                            fetch(`https://coverartarchive.org/release-group/?artist=${encodeURIComponent(artist)}`)
+                                .then(response => response.json())
+                                .then(coverData => {
+                                    // Extracting the image URL from the Cover Art Archive API response
+                                    if (coverData && coverData.length > 0 && coverData[0].images && coverData[0].images.length > 0) {
+                                        const imageUrl = coverData[0].images[0].image;
+                                        console.log(imageUrl);
+
+                                        // Creating and appending the image
+                                        const img = document.createElement('img');
+                                        img.src = imageUrl;
+                                        img.alt = artist;
+                                        songItem.appendChild(img);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching cover art data:', error);
+                                });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching artist data:', error);
+                    });
+
+                // Creating and appending other elements like title and like button
                 const title = document.createElement('h3');
-                title.textContent = track.name;
+                title.textContent = recording.title;
                 songItem.appendChild(title);
 
                 const likeBtn = document.createElement('button');
@@ -51,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 likeBtn.classList.add('like-btn');
                 songItem.appendChild(likeBtn);
 
+                // Appending the song item to the carousel
                 carousel.appendChild(songItem);
             });
         })
