@@ -1,0 +1,84 @@
+/* Gradient Background for Body (Animated) */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ffc404, #007bff, #a743ff); /* Animated gradient */
+    animation: gradientBackground 10s ease infinite; /* Animation */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+
+.container {
+    width: 300px;
+    height: 350px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    color: #007bff; /* Blue from palette */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6c757d; /* Gray from palette */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Static gradient color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(to right, #0056b3, #00437a); /* Animated gradient color on hover */
+}
+
+p {
+    text-align: center;
+    color: #6c757d; /* Gray from palette */
+}
+
+a {
+    color: #007bff; /* Blue from palette */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3; /* Darker shade of blue from palette */
+}

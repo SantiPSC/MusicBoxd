@@ -1,0 +1,74 @@
+/*
+color palette:
+
+yellow: #ffc404
+blue: #007bff
+dark yellow: #cca301
+soft purple: #a743ff
+dark blue: #004a99
+light blue: #6ec6ff
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+body {
+  background-color: #007bff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.vinyl-container {
+  position: relative;
+}
+
+#vinyl-img {
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: spin 5s linear infinite;
+  position: absolute;
+  top: calc(50% - 400px); /* Half the height of the image */
+  left: calc(50% - 400px); /* Half the width of the image */
+}
+
+.content-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h1 {
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0px 0px 40px 0px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#sign-in {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 60px 0px 0px 0px;
+}

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Website Title</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" href="{% static 'receta.css' %}" />
+
+  </head>
+  <body>
+    <nav class="nav navbar-custom">
+      <a href="{% url 'index' %}" class="nav-link"><i class="bi bi-house-fill"></i> Inicio</a>
+      {% if request.user.is_authenticated %}
+          <a href="#" class="nav-link">Hola {{request.user | title}}!</a>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" id="REG" class="nav-link btn btn-danger">Cerrar Sesión</button>
+        </form>
+      {% else %}
+          <a href="{% url 'login' %}" class="nav-link btn btn-outline">Iniciar Sesión</a>
+          <a href="#" id="REG" class="nav-link btn btn-danger">Registrate</a>
+      {% endif %}
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </body>
+</html>
